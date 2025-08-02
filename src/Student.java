@@ -1,7 +1,7 @@
 public class Student {  
     private String name;
     private int age;
-    private String address;
+    private String address; 
     private double math;
     private double lit;
     private double eng;
@@ -28,10 +28,10 @@ public class Student {
 
     public String level() {
         double avg = average();
-        if (avg >= 8) return "Xuất sắc";
-        else if (avg >= 7) return "Giỏi";
-        else if (avg >= 6) return "Khá";
-        else if (avg >= 5) return "Trung bình";
-        else return "Yếu";
+        if (avg >= 8) return "Xuat sac";
+        else if (avg >= 7) return "Gioi";
+        else if (avg >= 6) return "Kha";
+        else if (avg >= 5) return "Trung binh";
+        else return "Yeu";
     }
 } 

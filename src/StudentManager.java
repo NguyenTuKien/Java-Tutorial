@@ -1,27 +1,31 @@
 public class StudentManager {
     private Student[] students;
-    private int size;
+    private int currentSize;  
 
-    public StudentManager(int size) {
-        this.size = size;
-        this.students = new Student[size];
+    public StudentManager(int maxSize) {
+        this.students = new Student[maxSize];
+        this.currentSize = 0;
     }
 
     public void addStudent(Student s) {
-        if (size < students.length) {
-            students[size] = s;
-            size++;
+        if (currentSize < students.length) {
+            students[currentSize] = s;
+            currentSize++;
         } 
     }
 
     public void getInfo(int index) {
-        System.out.println(students[index].getName());
-        System.out.println(students[index].getAge());
-        System.out.println(students[index].getAddress());
-        System.out.println(students[index].getMath());
-        System.out.println(students[index].getLit());
-        System.out.println(students[index].getEng());
-        System.out.println(students[index].average());
-        System.out.println(students[index].level());
+        if (index >= 0 && index < currentSize) {
+            System.out.println(students[index].getName());
+            System.out.println(students[index].getAge());
+            System.out.println(students[index].getAddress());
+            System.out.println(students[index].getMath());
+            System.out.println(students[index].getLit());
+            System.out.println(students[index].getEng());
+            System.out.println(students[index].average());
+            System.out.println(students[index].level());
+        } else {
+            System.out.println("Invalid index!");
+        }
     }
 } 
