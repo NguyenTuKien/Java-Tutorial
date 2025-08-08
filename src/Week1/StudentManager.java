@@ -1,6 +1,8 @@
+package Week1;
+
 public class StudentManager {
     private Student[] students;
-    private int currentSize;  
+    private int currentSize;
 
     public StudentManager(int maxSize) {
         this.students = new Student[maxSize];
@@ -11,7 +13,7 @@ public class StudentManager {
         if (currentSize < students.length) {
             students[currentSize] = s;
             currentSize++;
-        } 
+        }
     }
 
     public void getInfo(int index) {
@@ -28,4 +30,4 @@ public class StudentManager {
             System.out.println("Invalid index!");
         }
     }
-} 
+}

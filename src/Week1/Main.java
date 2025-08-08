@@ -1,3 +1,4 @@
+package Week1;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +15,7 @@ public class Main {
             double eng = sc.nextDouble();
             Student s = new Student(name, age, address, math, lit, eng);
             students.addStudent(s);
-            sc.nextLine(); 
+            sc.nextLine();
         }
         int q = sc.nextInt();
         for (int i = 0; i < q; i++) {
