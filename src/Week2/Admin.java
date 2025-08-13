@@ -1,42 +1,101 @@
 package Week2;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Admin extends Guest {
+public class Admin {
+    ArrayList<Book> books = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
 
-    public void addBook(Book book) {
-        library.addBook(book);
+    private void addBook(Book book) {
+        books.add(book);
     }
 
-    public void removeBook(Book book) {
-        library.removeBook(book);
-    }
-
-    public void updateBook(String request, Book updatedBook) {
-        library.updateBook(request, updatedBook);
-    }
-
-    public void function(String request)
-    {
-        if (request.equals("add")) {
-            String title = scanner.next();
-            String author = scanner.next();
-            String type = scanner.next();
-            String publicDate = scanner.next();
-            Book book = new Book(title, author, type, publicDate);
-            addBook(book);
-        } else if (request.equals("remove")) {
-            String title = scanner.next();
-            Book book = (Book) library.searchBook(title);
-            if (book != null) {
-                removeBook(book);
+    private void removeBook(Book book) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).equals(book)) {
+                books.remove(i);
+                return;
             }
-        } else if (request.equals("update")) {
-            String title = scanner.next();
-            Book updatedBook = new Book(scanner.next(), scanner.next(), scanner.next(), scanner.next());
-            updateBook(title, updatedBook);
         }
-        else {
-            super.function(request);
-        }   
+    }
+
+    private void updateBook(String keyWord, Book updatedBook) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(keyWord)) {
+                books.set(i, updatedBook);
+                return;
+            }
+            else if (books.get(i).getAuthor().equals(keyWord)) {
+                books.set(i, updatedBook);
+                return;
+            }
+            else if (books.get(i).getType().equals(keyWord)) {
+                books.set(i, updatedBook);
+                return;
+            }
+            else if( books.get(i).getPublicDate().equals(keyWord)) {
+                books.set(i, updatedBook);
+                return;
+            }
+        }
+    }
+
+    protected Book searchBook(String keyWord) {
+        for (Book book : books) {
+            if (book.getTitle().equals(keyWord) || book.getAuthor().equals(keyWord) ||
+                book.getType().equals(keyWord) || book.getPublicDate().equals(keyWord)) {
+                return book;
+            }
+        }
+        return null; // Book not found
+    }
+
+    protected void viewBooks() {
+        for (Book book : books) {
+            System.out.println(book.getTitle());
+            System.out.println(book.getAuthor());
+            System.out.println(book.getType());
+            System.out.println(book.getPublicDate());
+        }
+    }
+
+    public void function(String function){
+        if(function.equals("add")){
+            String title = sc.nextLine();
+            String author = sc.nextLine();
+            String type = sc.nextLine();
+            String date = sc.nextLine();
+            Book book = new Book(title, author, type, date);
+            addBook(book);
+            System.out.println("___________________________");
+        }
+        else if(function.equals("remove")){
+            String title = sc.nextLine();
+            String author = sc.nextLine();
+            String type = sc.nextLine();
+            String date = sc.nextLine();
+            Book book = new Book(title, author, type, date);
+            removeBook(book);
+            System.out.println("___________________________");
+        }
+        else if(function.equals("update")){
+            String keyWork = sc.nextLine();
+            String title = sc.nextLine();
+            String author = sc.nextLine();
+            String type = sc.nextLine();
+            String date = sc.nextLine();
+            Book book = new Book(title, author, type, date);
+            updateBook(keyWork, book);
+            System.out.println("___________________________");
+        }
+        else if(function.equals("search")){
+            String keyWord = sc.nextLine();
+            searchBook(keyWord).displayInfo();
+            System.out.println("___________________________");
+        }
+        else if(function.equals("view")){
+            viewBooks();
+            System.out.println("___________________________");
+        }
     }
 }
