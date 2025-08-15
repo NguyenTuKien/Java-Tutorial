@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Admin {
     ArrayList<Book> books = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
-
+    
     private void addBook(Book book) {
         books.add(book);
     }
