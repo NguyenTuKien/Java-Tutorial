@@ -10,13 +10,9 @@ public class Admin {
         books.add(book);
     }
 
-    private void removeBook(Book book) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).equals(book)) {
-                books.remove(i);
-                return;
-            }
-        }
+    private void removeBook(int index) {
+        Book book = books.get(index);
+        books.remove(book);
     }
 
     private void updateBook(String keyWord, Book updatedBook) {
@@ -61,24 +57,31 @@ public class Admin {
 
     public void function(String function){
         if(function.equals("add")){
+            System.out.println("Nhập thông tin sách (title, author, type, date):");
+            System.out.println("Title:");
             String title = sc.nextLine();
+            System.out.println("Author:");
             String author = sc.nextLine();
+            System.out.println("Type:");
             String type = sc.nextLine();
+            System.out.println("Date:");
             String date = sc.nextLine();
             Book book = new Book(title, author, type, date);
             addBook(book);
-            System.out.println("___________________________");
+            System.out.println("Thêm sách thành công!");
         }
+        
         else if(function.equals("remove")){
-            String title = sc.nextLine();
-            String author = sc.nextLine();
-            String type = sc.nextLine();
-            String date = sc.nextLine();
-            Book book = new Book(title, author, type, date);
-            removeBook(book);
-            System.out.println("___________________________");
+            System.out.println("Nhập vị trí sách cần xóa (0 đến " + (books.size() - 1) + "):");
+            int index = sc.nextInt();
+            sc.nextLine();
+            removeBook(index);
+            System.out.println("Xóa sách thành công!");
         }
+
         else if(function.equals("update")){
+            System.out.println("Nhập thông tin sách cần cập nhật (keyWork):");
+            System.out.println("KeyWork (title, author, type, date):");
             String keyWork = sc.nextLine();
             String title = sc.nextLine();
             String author = sc.nextLine();
