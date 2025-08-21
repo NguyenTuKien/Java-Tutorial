@@ -5,6 +5,14 @@ import java.util.Scanner;
 public class Admin {
     ArrayList<Book> books = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
+
+    public Admin() {
+        books.add(new Book("Harry Potter", "J.K. Rowling", "Fantasy", "1997"));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy", "1937"));
+        books.add(new Book("1984", "George Orwell", "Dystopian", "1949"));
+        books.add(new Book("To Kill a Mockingbird", "Harper Lee", "Fiction", "1960"));
+        books.add(new Book("The Great Gatsby", "F. Scott Fitzgerald", "Fiction", "1925"));
+    }
     
     private void addBook(Book book) {
         books.add(book);
@@ -48,10 +56,8 @@ public class Admin {
 
     protected void viewBooks() {
         for (Book book : books) {
-            System.out.println(book.getTitle());
-            System.out.println(book.getAuthor());
-            System.out.println(book.getType());
-            System.out.println(book.getPublicDate());
+            System.out.println(book.getTitle() + " " + book.getAuthor() + " " + book.getType() + " " + book.getPublicDate());
+            System.out.println("___________________________");
         }
     }
 
@@ -98,7 +104,6 @@ public class Admin {
         }
         else if(function.equals("view")){
             viewBooks();
-            System.out.println("___________________________");
         }
     }
 }

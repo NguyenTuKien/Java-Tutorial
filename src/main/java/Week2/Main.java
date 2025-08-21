@@ -24,6 +24,9 @@ public class Main {
                     admin.function(request);
                 } while (true);
             } 
+            else {
+                System.out.println("Mật khẩu không đúng!");
+            }
         }
         else {
             System.out.println("Bạn là khách, không có quyền truy cập vào chức năng quản trị.");

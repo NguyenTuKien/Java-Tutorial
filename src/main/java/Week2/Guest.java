@@ -1,6 +1,7 @@
 package Week2;
 
 public class Guest extends Admin {
+    
     @Override
     public void function(String function){
         if(function.equals("search")){
